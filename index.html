@@ -5,8 +5,75 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<link rel="stylesheet" href="assets/css/style.min.css" />
 	</head>
 	<body>
-		<h1>Hello</h1>
+		<div class="first-page">
+			<div class="content">
+				<img
+					src="https://freepngimg.com/download/diamond/4-diamond-png-image.png"
+					alt=""
+				/>
+				<h1>Lorem ipsum dolor, sit</h1>
+			</div>
+			<div class="overlay"></div>
+			<video
+				muted
+				loop
+				autoplay
+				src="https://player.vimeo.com/external/374178475.sd.mp4?s=5358373449db19677755e79392cbdb7e3b9a67d7&profile_id=139&oauth2_token_id=57447761"
+			></video>
+		</div>
+		<div class="second-page">
+			<h2>hello i am second page</h2>
+		</div>
+		<script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+		<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+		<script>
+			let tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: ".first-page",
+					start: "top",
+					end: "100%",
+					scrub: "true",
+					pin: true,
+				},
+			});
+
+			tl.fromTo(
+				".first-page",
+				{
+					clipPath: "circle(4%)",
+				},
+				{
+					clipPath: "circle(75%)",
+					duration: 2,
+				}
+			);
+
+			tl.fromTo(
+				".content img",
+				{
+					scale: 1,
+				},
+				{
+					scale: 0,
+					opacity: 0,
+					duration: 1,
+				},
+				"-=2"
+			);
+
+			tl.fromTo(
+				".content h1",
+				{
+					opacity: 0,
+				},
+				{
+					opacity: 1,
+					duration: 1,
+				}
+			);
+		</script>
 	</body>
 </html>
